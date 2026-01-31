@@ -1,0 +1,497 @@
+:root {
+    --text-color: #333333;
+    --heading-color: #111111;
+    --accent-color: #555555;
+    /* Neutral Dark Grey for sophistication */
+    --bg-color: #ffffff;
+    --bg-light: #f8f8f8;
+    /* Very Cool Light Grey */
+    --border-color: #e5e5e5;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Noto Sans JP', sans-serif;
+    --container-width: 1100px;
+    /* Slightly tighter for better reading measure */
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    /* Slightly smaller for elegant feel */
+    line-height: 2.0;
+    /* Looser leading */
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.05em;
+    /* Added global tracking */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--heading-color);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.08em;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s, color 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Utility */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-padding {
+    padding: 120px 0;
+    /* More white space */
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(0.95);
+    /* Softer, slightly muted look */
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    opacity: 0;
+    /* JS reveal */
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+}
+
+.hero-text {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: var(--heading-color);
+}
+
+.section-desc {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* Steps (Alternating Layout) */
+.step-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.step-grid.reverse {
+    direction: rtl;
+}
+
+.step-grid.reverse>* {
+    direction: ltr;
+}
+
+.step-content {
+    opacity: 0;
+    /* JS reveal */
+}
+
+.step-number {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 5px;
+    margin-bottom: 25px;
+    color: var(--heading-color);
+}
+
+.step-title {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+    font-family: var(--font-body);
+    font-weight: 400;
+    /* Lighter weight for Japanese */
+}
+
+.step-text {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.step-image {
+    opacity: 0;
+    /* JS reveal */
+}
+
+.step-image img {
+    width: 100%;
+    /* Sharp corners, no border radius */
+}
+
+/* Failures Section (3 Column) */
+.failures-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.failure-card {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.3s;
+    overflow: hidden;
+    /* For image scaling */
+    padding: 0 0 30px 0;
+    /* Reset padding, keep bottom */
+}
+
+/* Added Image Styles for Failure Cards */
+.failure-image {
+    height: 180px;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.failure-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.failure-card:hover .failure-image img {
+    transform: scale(1.05);
+}
+
+.failure-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.failure-content {
+    padding: 0 25px 30px;
+    /* Wrapper for text padding */
+}
+
+/* Note: I'll apply padding directly to the text elements via margins or padding in .failure-card if I don't change HTML structure too much. 
+   Actually, let's keep the padding on the card itself for the text parts below the image. 
+   Wait, the HTML structure in previous step has image inside card. 
+   Let's adjust .failure-card to remove padding, and add it to a wrapper or apply to children.
+   Simpler: Remove padding from .failure-card, add specific padding to text elements.
+*/
+
+.failure-icon {
+    font-size: 2rem;
+    margin: 20px 0 10px;
+    display: block;
+    font-family: var(--font-heading);
+    color: #999;
+}
+
+.failure-title,
+.failure-solution {
+    padding: 0 20px;
+}
+
+.failure-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-family: var(--font-body);
+}
+
+.failure-solution {
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #eee;
+    /* This might look weird if full width? No, it's inside padding. */
+    padding-top: 15px;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* Lifestyle Section */
+.lifestyle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+}
+
+.lifestyle-item {
+    background: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.lifestyle-image-placeholder {
+    height: 250px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+}
+
+.lifestyle-content {
+    padding: 40px;
+}
+
+.lifestyle-tag {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+/* Maintenance & FAQ (Accordion Style Look for text) */
+.maintenance-block {
+    margin-bottom: 50px;
+    border-left: 2px solid var(--border-color);
+    padding-left: 30px;
+}
+
+.maintenance-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-family: var(--font-body);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: 30px 0;
+}
+
+.faq-q {
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+.faq-q:before {
+    content: "Q.";
+    font-family: var(--font-heading);
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+.faq-a {
+    color: #666;
+    padding-left: 35px;
+}
+
+/* Delivery Banner */
+.delivery-banner {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+    margin: 80px 0;
+}
+
+.delivery-link {
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid var(--heading-color);
+    padding: 15px 50px;
+    color: var(--heading-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    transition: all 0.3s;
+}
+
+.delivery-link:hover {
+    background-color: var(--heading-color);
+    color: #fff;
+}
+
+/* Product Collection */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.product-card {
+    text-align: left;
+}
+
+.product-image-placeholder {
+    height: 300px;
+    /* Taller */
+    background-color: #f0f0f0;
+    margin-bottom: 20px;
+}
+
+.product-name {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.product-price {
+    font-size: 0.9rem;
+    color: #666;
+    font-family: var(--font-heading);
+}
+
+/* Brand Story */
+.brand-story {
+    background-color: #333;
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.brand-story p {
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+/* Footer */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: #999;
+}
+
+/* Animations */
+@keyframes fadeInMove {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInMove 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    /* Smoother easing */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .section-padding {
+        padding: 80px 0;
+    }
+
+    .step-grid,
+    .failures-grid,
+    .lifestyle-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .step-grid.reverse {
+        direction: ltr !important;
+    }
+
+    .container {
+        padding: 0 25px;
+    }
+}
